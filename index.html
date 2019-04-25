@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="Samond,Home" />
+    <meta name="description" content="Samond Home" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="icon" href="html/images/comm/logo.ico" type="image/x-icon">
+
+<!-- ==========meta结束========== -->
+	<link rel="stylesheet" href="html/css/index/index.css">
+	<script type="text/javascript" async="" src="html/js/index/ga.js"></script>
+	<title>Samond Home网络选择页</title>
+	<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38965494-1']);
+    _gaq.push(['_setDomainName', 'evanyou.me']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+    	<!-- 博客，github，简历，作品 -->
+        <h1>请选择IPV4/IPV6访问</h1>
+        <h2>优先推荐IPV6访问，如果您没有IPV6环境则自行选择IPV4访问</h2>
+        <p><a href="http://n1.likeqi.cn:8888/index.html" target="_blank"><b>使用IPV6访问</b></a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="http://index.likeqi.cn/natindex.html" target="_blank"><b>使用IPV4访问</b></a></p>
+        <!-- <p><a href="#">production</a></p> -->
+    </div>
+    <div id="footer">
+    	<a  href="http://www.miitbeian.gov.cn/" target="_blank">
+			鲁ICP备17025855号
+		</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41148102000159" target="_blank" >
+ 			鲁公网安备 41148102000159号
+ 		</a>
+
+    </div>
+    <canvas width="1920" height="959"></canvas>
+    <script>
+    document.addEventListener('touchmove', function(e) {
+        e.preventDefault()
+    })
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+        h = window.innerHeight,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI * 2,
+        v = m.cos,
+        z = m.random
+    c.width = w * pr
+    c.height = h * pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+
+    function i() {
+        x.clearRect(0, 0, w, h)
+        q = [{ x: 0, y: h * .7 + f }, { x: 0, y: h * .7 - f }]
+        while (q[1].x < w + f) d(q[0], q[1])
+    }
+
+    function d(i, j) {
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z() * 2 - 0.25) * f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r -= u / -50
+        x.fillStyle = '#' + (v(r) * 127 + 128 << 16 | v(r + u / 3) * 127 + 128 << 8 | v(r + u / 3 * 2) * 127 + 128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = { x: k, y: n }
+    }
+
+    function y(p) {
+        var t = p + (z() * 2 - 1.1) * f
+        return (t > h || t < 0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+    </script>
+</body>
+
+</html>
